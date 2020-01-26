@@ -1,0 +1,55 @@
+type Query {
+  "List of students"
+  getStudents: [Student!]!
+
+  "Student by id"
+  getStudent(id: ID!): Student!
+
+  "List of courses"
+  getCourses: [Course!]!
+
+  "Course by id"
+  getCourse(id: ID!): Course!
+}
+
+"Information students"
+type Student {
+  "Id student"
+  id: ID!
+  name: String!
+  email: String!
+  website: String
+  courses: [Course!]!
+}
+
+"Information course"
+type Course {
+  "Id course"
+  id: ID!
+  title: String!
+  description: String!
+  path: String!
+  logo: String!
+  teacher: String!
+  class: Int!
+  time: Float!
+  level: Level!
+  reviews: [Review!]!
+  students: [Student]
+}
+
+"Information review"
+type Review {
+  "Id review"
+  id: ID!
+  name: String!
+  points: Float!
+  comment: String
+}
+
+enum Level {
+  BEGGINER
+  INTERMEDIATE
+  ADVANCED
+  ALL
+}
